@@ -1,0 +1,14 @@
+**/.env
+**/.env.*
+!**/.env.example
+**/node_modules
+**/.next
+agent/.venv
+**/__pycache__
+**/.pytest_cache
+backend/server.exe*
+demo
+frontend
+extension
+.git
+*.log

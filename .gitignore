@@ -1,0 +1,46 @@
+# Local notes and drafts (not part of the project)
+DESIGN.md
+design.md
+allaboutourproject*
+build_site.py
+submission-draft.md
+* (1).*
+
+# Secrets: never commit real env files (only *.env.example)
+.env
+.env.*
+!.env.example
+**/.env
+**/.env.*
+!**/.env.example
+!**/.env.*.example
+*.pem
+
+# Dependencies and build output
+node_modules/
+extension/.output/
+extension/.wxt/
+agent/.venv/
+agent/.pytest_cache/
+__pycache__/
+*.pyc
+backend/bin/
+*.exe
+web/
+
+# Logs
+*.log
+
+# Editor, OS and AI tool folders
+.claude/
+.gemini/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Playwright CLI output (may contain credentials)
+.playwright-cli/
+
+# Demo recordings and assets (kept local)
+demo/
