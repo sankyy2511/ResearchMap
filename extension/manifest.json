@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "Research Map",
+  "version": "1.1.8",
+  "description": "Turns your research tabs into a live knowledge map. Tracks only when you press Start Tracking.",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEApoLzJ3zGjPn5ZAV6gO9RXxUJn/aavB1fVAYAxaB2dlcqfDEmhZw8IKfTuvX82uPNgFCpeNFnA6HuG1Q1Qsk8EMdJG9SXOEYj/i/5YMr1n8FIeKxq+Re01WaeQY2ar4AJEYaNBumFhTtg/gDB0q4HlxPE/zkqyl4Pq94c34PPF77Wp1OMGds3sItzRVhyMj5xGwSH1OBIwujBOJBqql8LOpZJ0pukjWiHKpj7OH6J6461vRCUR1i2tGJMYRoVbdRFpAnDJahXuRA1RazF1yALXlxEu0ptmquUOO/PQg/d8UZr0rzhkfVDnTD2dVluZOupOk8WlvK7VVVe678fQzwqAwIDAQAB",
+  "incognito": "not_allowed",
+  "permissions": ["tabs", "tabGroups", "storage", "alarms", "idle", "scripting", "activeTab", "tabCapture", "declarativeNetRequest", "contextMenus", "webNavigation", "notifications"],
+  "host_permissions": ["<all_urls>"],
+  "background": { "service_worker": "background.js" },
+  "action": { "default_popup": "popup.html", "default_title": "Research Map" },
+  "externally_connectable": { "matches": ["https://researhmap.in/*", "https://www.researhmap.in/*", "https://research-map-88f54.web.app/*", "https://research-map-88f54.firebaseapp.com/*", "http://localhost:3000/*", "http://127.0.0.1:3000/*"] },
+  "commands": {
+    "add-page": { "suggested_key": { "default": "Alt+Shift+A" }, "description": "Add this page to the workspace now" },
+    "go-live": { "suggested_key": { "default": "Alt+Shift+L" }, "description": "Show this tab live in the workspace" },
+    "pause": { "suggested_key": { "default": "Alt+Shift+P" }, "description": "Pause or resume tracking" }
+  }
+}
