@@ -1,0 +1,20 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><style>
+body{font:13px system-ui;width:280px;margin:0;padding:14px;color:#1f1b2e}
+h1{font-size:15px;margin:0 0 8px}.row{margin:8px 0}.muted{color:#666;font-size:12px}
+input{width:100%;box-sizing:border-box;padding:6px;border:1px solid #ccc;border-radius:8px}
+button{margin-top:6px;padding:6px 10px;border:0;border-radius:8px;background:#7b5cf0;color:#fff;cursor:pointer}
+.pill{display:inline-block;padding:2px 8px;border-radius:99px;background:#eee}.on{background:#dff3d8}
+</style></head><body>
+<h1>Research Map</h1>
+<div class="row">Status: <span id="status" class="pill">…</span></div>
+<div class="row muted" id="ws"></div>
+<div class="row" id="goal" hidden><b>Your goal:</b> <span id="goaltext"></span></div>
+<details class="row"><summary>Connect manually</summary>
+  <p class="muted">Normally the web app connects automatically (Settings → Connect extension). Or paste an extension token:</p>
+  <input id="token" placeholder="rm_ext_…"><input id="api" placeholder="https://your-app-address/api/v1" style="margin-top:6px">
+  <button id="save">Save</button>
+</details>
+<p class="muted">Shortcuts: Alt+Shift+A add page · Alt+Shift+L live view · Alt+Shift+P pause.<br>Only tracks while you press Start Tracking in the app. Never in incognito.</p>
+<script src="popup.js"></script>
+</body></html>
