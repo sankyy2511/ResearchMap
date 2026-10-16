@@ -1,0 +1,242 @@
+@import "tailwindcss";
+@import "@xyflow/react/dist/style.css";
+
+/* ================================================================
+   DESIGN TOKENS: the landing page colours (white, peach, soft yellow, sky blue) with near-black ink.
+   Token names are kept for the whole app: "purple" now holds the coral brand accent.
+   ================================================================ */
+@theme {
+  /* Base surfaces & ink */
+  --color-canvas: #faf8f5;
+  --color-canvas-cool: #eceff3;
+  --color-ink: #12151c;
+  --color-ink-soft: #2d323c;
+  --color-muted: #666b75;
+  --color-faint: #9a9ea7;
+  --color-line: #e6e2dc;
+  --color-line-cool: #e1e5ea;
+  --color-pill: #12151c;
+
+  /* Brand accent (coral) and soft companions */
+  --color-purple: #ee7048;
+  --color-purple-deep: #c4492a;
+  --color-lavender: #fbcfb6;
+  --color-lavender-soft: #fdeee5;
+  --color-sun: #fde3b0;
+  --color-sun-soft: #fff5e1;
+  --color-sun-deep: #96601f;
+  --color-coral: #f3a283;
+  --color-coral-soft: #fde6dc;
+  --color-coral-deep: #bf4d2c;
+  --color-mint: #c9e0d0;
+  --color-mint-soft: #e8f2eb;
+  --color-mint-deep: #3a7552;
+  --color-sky: #bfe2f5;
+  --color-sky-soft: #e8f5fc;
+  --color-sky-deep: #2f6a8f;
+  --color-pink: #f4cdc6;
+  --color-pink-soft: #fbe8e4;
+  --color-pink-deep: #b8514a;
+  --color-cream: #fbeee0;
+  --color-star: #ffc23d;
+
+  /* Semantic feedback */
+  --color-success: #23864b;
+  --color-success-soft: #dcf2e4;
+  --color-warning: #a4660a;
+  --color-warning-soft: #fff0d4;
+  --color-danger: #c93535;
+  --color-danger-soft: #fde2e2;
+  --color-info: #3d5f88;
+  --color-info-soft: #e6ecf3;
+
+  /* Fonts (wired from next/font in app/layout.tsx) */
+  --font-display: var(--font-unbounded), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* Shadows */
+  --shadow-clay: 0 18px 34px -16px rgb(17 21 28 / 0.2), inset 0 -6px 12px rgb(17 21 28 / 0.04), inset 0 6px 12px rgb(255 255 255 / 0.9);
+  --shadow-clay-sm: 0 10px 20px -12px rgb(17 21 28 / 0.22), inset 0 -3px 6px rgb(17 21 28 / 0.03), inset 0 3px 6px rgb(255 255 255 / 0.85);
+  --shadow-clay-lg: 0 30px 60px -24px rgb(17 21 28 / 0.25), inset 0 -8px 16px rgb(17 21 28 / 0.04), inset 0 8px 16px rgb(255 255 255 / 0.9);
+  --shadow-pop: 0 1px 2px rgb(17 21 28 / 0.06), 0 10px 24px -12px rgb(17 21 28 / 0.22);
+  --shadow-pop-lg: 0 2px 4px rgb(17 21 28 / 0.07), 0 18px 36px -14px rgb(17 21 28 / 0.28);
+  --shadow-pop-purple: 0 10px 22px -10px rgb(238 112 72 / 0.55);
+  --shadow-soft: 0 1px 2px rgb(17 21 28 / 0.05), 0 8px 24px -14px rgb(17 21 28 / 0.16);
+  --shadow-float: 0 24px 48px -18px rgb(17 21 28 / 0.35);
+
+  /* Motion */
+  --ease-clay: cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  --animate-shimmer: shimmer 1.6s linear infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-flash: flash 1.4s ease-out 2;
+  --animate-scan: scan 2.4s linear infinite;
+  --animate-nudge: nudge 1.6s ease-in-out infinite;
+
+  @keyframes shimmer {
+    0% { background-position: -400px 0; }
+    100% { background-position: 400px 0; }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  @keyframes flash {
+    0% { box-shadow: 0 0 0 0 rgb(123 92 240 / 0.7); }
+    100% { box-shadow: 0 0 0 18px rgb(123 92 240 / 0); }
+  }
+  @keyframes nudge {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(-4px, -6px); }
+  }
+  @keyframes scan {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100%); }
+  }
+}
+
+/* Canvas patterns (DESIGN.md §6.1) */
+@utility bg-dots {
+  background-color: transparent; /* the page colour (bg-app) shows behind the dots */
+  background-image: radial-gradient(rgb(28 27 43 / 0.09) 1.1px, transparent 1.2px);
+  background-size: 22px 22px;
+}
+@utility bg-dots-cool {
+  background-color: var(--color-canvas-cool);
+  background-image: radial-gradient(rgb(28 27 43 / 0.05) 1px, transparent 1.1px);
+  background-size: 24px 24px;
+}
+@utility bg-speed {
+  background-image: repeating-linear-gradient(0deg, rgb(0 0 0 / 0.035) 0 2px, transparent 2px 7px);
+}
+@utility skeleton {
+  background: linear-gradient(90deg, #ece7dd 0, #f7f3ec 40%, #ece7dd 80%);
+  background-size: 800px 100%;
+  animation: shimmer 1.6s linear infinite;
+}
+/* Horizontal strips that may scroll on phones (swipe / trackpad) without showing a scrollbar. */
+@utility scrollbar-none {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+/* Brand colours of the landing page: peach, soft yellow and sky blue. Used for the logo tile and the highlighted word. */
+@utility bg-brand-gradient {
+  background-image: linear-gradient(135deg, #fbc9ac 0%, #fde3b0 52%, #b9e0f4 100%);
+}
+/* App pages: warm white with the landing colours as faint glows in the corners (not a full gradient). */
+@utility bg-app {
+  background-color: #faf8f5;
+  background-image:
+    radial-gradient(42% 38% at 0% 0%, rgba(251, 207, 182, 0.42) 0%, rgba(251, 207, 182, 0) 70%),
+    radial-gradient(40% 36% at 100% 0%, rgba(191, 226, 245, 0.45) 0%, rgba(191, 226, 245, 0) 70%),
+    radial-gradient(46% 40% at 0% 100%, rgba(253, 227, 176, 0.38) 0%, rgba(253, 227, 176, 0) 70%),
+    radial-gradient(40% 36% at 100% 100%, rgba(191, 226, 245, 0.3) 0%, rgba(191, 226, 245, 0) 70%);
+  background-attachment: fixed;
+}
+/* Landing hero: white at the top, colour that builds up toward the bottom (peach, yellow, mint, sky blue), then a soft fade to white. */
+@utility bg-hero-glow {
+  background-color: #ffffff;
+  background-image:
+    linear-gradient(to top, #ffffff 0%, rgba(255, 255, 255, 0.85) 6%, rgba(255, 255, 255, 0) 20%),
+    linear-gradient(to bottom, #ffffff 0%, rgba(255, 255, 255, 0.8) 6%, rgba(255, 255, 255, 0.38) 26%, rgba(255, 255, 255, 0) 56%),
+    linear-gradient(90deg, #fcd2ae 0%, #fde8a4 30%, #e2f0d6 52%, #c3e7f5 78%, #b3dbf4 100%);
+}
+@utility tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    background: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    /* Never show a page-level horizontal scrollbar (decorations, slide-in panels). `clip` keeps sticky headers working. */
+    overflow-x: clip;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-purple);
+    outline-offset: 2px;
+  }
+  ::selection {
+    background: var(--color-sun);
+    color: var(--color-ink);
+  }
+}
+
+/* React Flow theming to match the design system */
+.react-flow {
+  --xy-background-color: transparent;
+  --xy-edge-stroke: #9794ab;
+  --xy-edge-stroke-selected: #7b5cf0;
+  --xy-connectionline-stroke: #7b5cf0;
+  --xy-handle-background-color: #ffffff;
+  --xy-handle-border-color: #1c1b2b;
+  --xy-selection-background-color: rgb(123 92 240 / 0.08);
+  --xy-selection-border: 1px dashed #7b5cf0;
+  --xy-minimap-background-color: #ffffff;
+  --xy-minimap-mask-background-color: rgb(245 241 232 / 0.7);
+  --xy-controls-button-background-color: #ffffff;
+  --xy-controls-button-border-color: #e8e2d6;
+  --xy-node-boxshadow-selected: none;
+  --xy-node-border-radius: 20px;
+}
+.react-flow__node {
+  font-family: var(--font-sans);
+}
+.react-flow__node-topic {
+  z-index: -1 !important;
+}
+.react-flow__handle {
+  width: 10px;
+  height: 10px;
+  border-width: 2px;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+.react-flow__node:hover .react-flow__handle,
+.react-flow__node.selected .react-flow__handle,
+.react-flow.connecting .react-flow__handle {
+  opacity: 1;
+}
+.react-flow__minimap {
+  border-radius: 20px;
+  overflow: hidden;
+  border: 2px solid #1c1b2b;
+  box-shadow: 3px 3px 0 #1c1b2b;
+}
+.react-flow__attribution {
+  background: transparent;
+  font-size: 9px;
+}
+
+/* Markdown rendering inside notes */
+.md p { margin: 0.25rem 0; }
+.md ul { list-style: disc; padding-left: 1.1rem; margin: 0.25rem 0; }
+.md ol { list-style: decimal; padding-left: 1.1rem; margin: 0.25rem 0; }
+.md code { font-family: var(--font-mono); font-size: 0.85em; background: rgb(28 27 43 / 0.06); padding: 0 0.3em; border-radius: 6px; }
+.md h1, .md h2, .md h3 { font-size: 0.95rem; font-weight: 700; margin: 0.4rem 0 0.2rem; font-family: var(--font-sans); letter-spacing: 0; }
+.md a { color: var(--color-purple-deep); text-decoration: underline; }
+.md blockquote { border-left: 3px solid var(--color-sun); padding-left: 0.5rem; color: var(--color-ink-soft); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+@media print {
+  .no-print { display: none !important; }
+  body { background: #fff !important; }
+  .print-break { break-before: page; }
+}
