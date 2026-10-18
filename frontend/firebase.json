@@ -1,0 +1,18 @@
+{
+  "hosting": {
+    "public": "out",
+    "cleanUrls": true,
+    "trailingSlash": false,
+    "ignore": ["firebase.json", "**/.*"],
+    "rewrites": [
+      { "source": "/w/*/report/*", "destination": "/w/_/report/_.html" },
+      { "source": "/w/*", "destination": "/w/_.html" },
+      { "source": "/join/*", "destination": "/join/_.html" }
+    ],
+    "headers": [
+      { "source": "/_next/static/**", "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }] },
+      { "source": "**/*.html", "headers": [{ "key": "Cache-Control", "value": "no-cache" }] },
+      { "source": "/research-map-extension.zip", "headers": [{ "key": "Cache-Control", "value": "no-cache" }] }
+    ]
+  }
+}
