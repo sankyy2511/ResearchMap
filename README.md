@@ -1,6 +1,6 @@
 # Research Map
 
-An AI research workspace that turns browsing into a clear, shared map of what you read and learned. Powered by Google Gemini.
+An AI research workspace that turns browsing into a clear, shared map of what you read and learned.
 
 | | |
 |---|---|
@@ -342,7 +342,6 @@ uv run --with mcp --with websockets python ../scripts/mcp_e2e.py --api http://lo
 ## Project structure
 
 ```
-Ingress/
   backend/        Go backend: API, capture, AI pipeline, WebSocket, MCP server, database migrations
   agent/          Python AI service: Gemini prompts, provider routing, embeddings, tests
   frontend/       Next.js web app: canvas, views, panels, reports, settings
