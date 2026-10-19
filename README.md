@@ -1,11 +1,15 @@
 # Research Map
 
-An AI research workspace that turns browsing into a clear, shared map of what you read and learned.
+An AI research workspace that turns browsing into a clear, shared map of what you read and learned. Powered by Google Gemini.
+
+### Live Deployment Evidence (Firebase Hosting)
+![Firebase Hosting Deployment](docs/firebase-deployment.png)
 
 | | |
 |---|---|
-| **Live Frontend** | [https://researhmap.in](https://researhmap.in) |
+| **Live Frontend** | [https://researhmap.in](https://researhmap.in) / [https://research-map-88f54.web.app](https://research-map-88f54.web.app) |
 | **Frontend Hosting** | Firebase Hosting (Google Cloud) |
+| **Backend API** | [https://research-map-api-812274791846.asia-southeast1.run.app/api/v1/readyz](https://research-map-api-812274791846.asia-southeast1.run.app/api/v1/readyz) |
 | **Backend & AI Hosting** | Google Cloud Run (asia-southeast1) |
 | **Built with** | Google Gemini API, Google Cloud Run, Firebase Hosting, Next.js, Go, Python, PostgreSQL |
 
@@ -342,6 +346,7 @@ uv run --with mcp --with websockets python ../scripts/mcp_e2e.py --api http://lo
 ## Project structure
 
 ```
+Ingress/
   backend/        Go backend: API, capture, AI pipeline, WebSocket, MCP server, database migrations
   agent/          Python AI service: Gemini prompts, provider routing, embeddings, tests
   frontend/       Next.js web app: canvas, views, panels, reports, settings
