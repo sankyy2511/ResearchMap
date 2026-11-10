@@ -5,11 +5,7 @@ An AI research workspace that turns browsing into a clear, shared map of what yo
 ### Live Deployment Evidence (Firebase Hosting)
 ![Firebase Hosting Deployment](docs/firebase-deployment.png)
 
-| | |
-|---|---|
-| **Live Frontend** | [https://researhmap.in](https://researhmap.in) / [https://research-map-88f54.web.app](https://research-map-88f54.web.app) |
-| **Frontend Hosting** | Firebase Hosting (Google Cloud) |
-| **Backend API** | [https://research-map-api-812274791846.asia-southeast1.run.app/api/v1/readyz](https://research-map-api-812274791846.asia-southeast1.run.app/api/v1/readyz) |
+
 | **Backend & AI Hosting** | Google Cloud Run (asia-southeast1) |
 | **Built with** | Google Gemini API, Google Cloud Run, Firebase Hosting, Next.js, Go, Python, PostgreSQL |
 
